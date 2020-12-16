@@ -7,7 +7,7 @@
     <version>20.0.0</version>
     <packageSourceUrl>https://github.com/DarthJake/frc-radioconfigurationutility</packageSourceUrl>
     <authors>WPI</authors>
-    <owners>Jacob Ellsworth</owners>
+    <owners>DarthJake</owners>
     <summary>FRC Radio Configuration Utility</summary>
     <description>This is the FRC Radio Configuration Utility required by FIRST to program the "radio" in the FRC robotics competition.</description>
     <projectUrl>https://docs.wpilib.org/en/stable/docs/getting-started/getting-started-frc-control-system/radio-programming.html#programming-your-radio</projectUrl>
