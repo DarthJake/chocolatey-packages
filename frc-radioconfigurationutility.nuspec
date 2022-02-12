@@ -4,7 +4,7 @@
   <metadata>
     <id>frc-radioconfigurationutility</id>
     <title>FRC Radio Configuration Utility</title>
-    <version>20.0.0</version>
+    <version>22.0.1</version>
     <packageSourceUrl>https://github.com/DarthJake/frc-radioconfigurationutility</packageSourceUrl>
     <authors>WPI</authors>
     <owners>DarthJake</owners>

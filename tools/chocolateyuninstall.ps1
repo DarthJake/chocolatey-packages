@@ -24,4 +24,4 @@ Write-Debug "Process ID:`t$ahkId"
 Uninstall-ChocolateyPackage  @packageArgs
 
 # Wait for the ahk process to end before moving on
-Wait-Process -Name "AutoHotkey" -Timeout 30
+Wait-Process -Name "AutoHotkey" -Timeout 180
