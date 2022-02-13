@@ -11,6 +11,7 @@ $unzipPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
   Url           = $url
   checksum      = $zipChecksum
+  checksumType   = 'sha256'
   UnzipLocation = $toolsDir
 }
 $packageArgs = @{
@@ -35,6 +36,3 @@ Write-Debug "$ahkExe start time:`t$($ahkProc.StartTime.ToShortTimeString())"
 Write-Debug "Process ID:`t$ahkId"
 
 Install-ChocolateyInstallPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyinstallpackage
-
-# Wait for the ahk process to end before moving on
-Wait-Process -Name "AutoHotkey" -Timeout 300
