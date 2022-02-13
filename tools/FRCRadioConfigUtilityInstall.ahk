@@ -19,7 +19,7 @@ winNPCapFinishedText := "Finished" ; Button2
 
 ;;;;; Operations ;;;;;
 ; Selecting OK button on setup window
-WinWait, %winSetupTitle%, %winSetupText%
+WinWait, %winSetupTitle%, %winSetupText%, 30
 WinActivate, %winSetupTitle%,,,
 ControlClick, Button1, %winSetupTitle%, %winSetupText%,,, NA
 
