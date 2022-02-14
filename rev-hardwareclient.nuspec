@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>rev-hardwareclient</id>
+    <title>REV Hardware Client</title>
+    <version>1.4.2</version>
+    <packageSourceUrl>https://github.com/DarthJake/rev-hardwareclient</packageSourceUrl>
+    <authors>REV Robotics</authors>
+    <owners>DarthJake</owners>
+    <summary>REV Hardware Client</summary>
+    <description>The REV Robotics Hardware Client software required to work with REV Robotics products in the FIRST FRC competition.</description>
+    <projectUrl>https://github.com/REVrobotics/REV-Software-Binaries/releases</projectUrl>
+    <tags>rev hardware client frc first robotics admin</tags>
+    <copyright>Copyright © 2022 REV Robotics</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/rev-hardwareclient@master/logo.png</iconUrl>
+    <dependencies>
+      <dependency id="autohotkey.portable" version="[1.1.33.02]" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
