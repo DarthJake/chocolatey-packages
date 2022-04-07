@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ctre-phoenixframework</id>
+    <title>CTRE Phoenix Framework</title>
+    <version>5.21.1.0</version>
+    <packageSourceUrl>https://github.com/DarthJake/ctre-phoenixframework</packageSourceUrl>
+    <authors>Cross The Road Electronics</authors>
+    <owners>DarthJake</owners>
+    <summary>CTRE Phoenix Framework</summary>
+    <description>The CTRE Phoenix Framework software required to work with CTRE products in the FIRST FRC competition.</description>
+    <projectUrl>https://github.com/CrossTheRoadElec/Phoenix-Releases/releases</projectUrl>
+    <tags>ctre cross the road electronics frc first robotics admin</tags>
+    <copyright>Copyright (c) 2021 Cross the Road Electronics.</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/ctre-phoenixframework@master/logo.png</iconUrl>
+    <dependencies>
+      <dependency id="autohotkey.portable" version="[1.1.33.02]" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
