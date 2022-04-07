@@ -1,7 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,chocolatey
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,chocolatey
 
-<<<<<<< HEAD
 ### Script Stuff ###
 update_vars.ps1
 Update-AUPackages.md
@@ -10,8 +9,6 @@ Update-Force-Test*
 update_info.xml
 api_key
 
-=======
->>>>>>> niMerge
 ### Chocolatey ###
 # Exclude packaged modules
 *.nupkg
