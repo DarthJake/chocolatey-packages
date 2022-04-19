@@ -9,6 +9,7 @@
     <authors>WPI, PeterJohnson, Et Al.</authors>
     <owners>DarthJake</owners>
     <summary>WPILib</summary>
+    <releaseNotes></releaseNotes>
     <description>The WPILib software required by FIRST Robotics for the FRC competition.
 
 ## Package Parameters
