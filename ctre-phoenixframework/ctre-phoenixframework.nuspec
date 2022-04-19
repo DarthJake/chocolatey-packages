@@ -9,6 +9,7 @@
     <authors>Cross The Road Electronics</authors>
     <owners>DarthJake</owners>
     <summary>CTRE Phoenix Framework</summary>
+    <releaseNotes></releaseNotes>
     <description>The CTRE Phoenix Framework software required to work with CTRE products in the FIRST FRC competition.</description>
     <projectUrl>https://github.com/CrossTheRoadElec/Phoenix-Releases/releases</projectUrl>
     <tags>ctre cross the road electronics frc first robotics admin</tags>
