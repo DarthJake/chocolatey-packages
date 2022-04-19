@@ -9,6 +9,7 @@
     <authors>REV Robotics</authors>
     <owners>DarthJake</owners>
     <summary>REV Hardware Client</summary>
+    <releaseNotes></releaseNotes>
     <description>The REV Robotics Hardware Client software required to work with REV Robotics products in the FIRST FRC competition.</description>
     <projectUrl>https://github.com/REVrobotics/REV-Software-Binaries/releases</projectUrl>
     <tags>rev hardware client frc first robotics admin</tags>
