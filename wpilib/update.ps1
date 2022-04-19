@@ -19,6 +19,7 @@ function global:au_SearchReplace {
     }
 }
 
+# Not called if there is no update 
 function global:au_BeforeUpdate { 
     $Latest.Checksum32 = Get-RemoteChecksum $Latest.URL32
     $Latest.Checksum64 = Get-RemoteChecksum $Latest.URL64
@@ -27,6 +28,7 @@ function global:au_BeforeUpdate {
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $releases
 
+    # Get URLs of latest installers
     $regex32 = "WPILib_Windows32-.*\.iso"
     $regex64 = "WPILib_Windows64-.*\.iso"
     $url32 = $download_page.links | ? href -match $regex32 | select -First 1 -expand href
@@ -34,11 +36,13 @@ function global:au_GetLatest {
     $url32 = $domain + $url32
     $url64 = $domain + $url64
 
+    # Determine version of latest installers
     $Matches = $null
     $versionRegex = "(?:WPILib_Windows64-)(?<Version>.*)(?:\.iso)"
     $url64 -match $versionRegex | Out-Null
     $version = $Matches.Version
 
+    # Make release notes URL
     $releaseNotesUrl = "$releases/tag/v${version}"
 
     return @{
