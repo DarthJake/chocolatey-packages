@@ -1,6 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,chocolatey
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,chocolatey
 
+# Temp exampels ignore
+copyq/
+less/
+librecad/
+prey/
+
 ### Script Stuff ###
 update_vars.ps1
 Update-AUPackages.md
