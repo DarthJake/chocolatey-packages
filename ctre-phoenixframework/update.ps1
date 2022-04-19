@@ -48,6 +48,7 @@ function global:au_GetLatest {
     return @{
         URL = $url
         Version = $version
+        FileName = $fileName
         ReleaseNotes = $releaseNotesUrl
     }
 }
