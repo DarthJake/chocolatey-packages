@@ -18,6 +18,7 @@ function global:au_SearchReplace {
     }
 }
 
+# Not called if there is no update 
 function global:au_BeforeUpdate {
     $global:progressPreference = 'SilentlyContinue'
     $Latest.Checksum = Get-RemoteChecksum $Latest.URL
@@ -27,15 +28,21 @@ function global:au_BeforeUpdate {
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $releases
 
+    # Get URLs of latest installers
     $regex = "CTRE_Phoenix_Framework_v.*\.exe"
     $url = $download_page.links | Where-Object href -match $regex | Select-Object -First 1 -expand href
     $url = $domain + $url
 
+    # Determine version number of latest installers
     $Matches = $null
     $versionRegex = "(?:CTRE_Phoenix_Framework_v)(?<Version>.*)(?:\.exe)"
     $url -match $versionRegex | Out-Null
     $version = $Matches.Version
 
+    # Determine installer file name
+    $fileName = $Matches.0
+
+    # Make release notes URL
     $releaseNotesUrl = "$releases/tag/v${version}"
 
     return @{
