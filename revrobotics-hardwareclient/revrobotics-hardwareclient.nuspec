@@ -5,7 +5,7 @@
     <id>revrobotics-hardwareclient</id>
     <title>REV Hardware Client</title>
     <version>1.4.2</version>
-    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/revrobotics-hardwareclient</packageSourceUrl>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/tree/master/revrobotics-hardwareclient</packageSourceUrl>
     <authors>REV Robotics</authors>
     <owners>DarthJake</owners>
     <summary>REV Hardware Client</summary>

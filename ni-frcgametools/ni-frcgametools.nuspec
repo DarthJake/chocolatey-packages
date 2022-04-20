@@ -5,7 +5,7 @@
     <id>ni-frcgametools</id>
     <title>NI FRC Game Tools</title>
     <version>22.0.1</version>
-    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/ni-frcgametools</packageSourceUrl>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/tree/master/ni-frcgametools</packageSourceUrl>
     <authors>NI</authors>
     <owners>DarthJake</owners>
     <summary>National Instruments FRC Game Tools required for competition in the FIRST FRC Robotics competition.</summary>
