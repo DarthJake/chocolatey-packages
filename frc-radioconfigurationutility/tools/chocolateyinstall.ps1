@@ -2,8 +2,8 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$url = "https://firstfrc.blob.core.windows.net/frc2022/Radio/FRC_Radio_Configuration_22_0_1.zip"
-$fileName = "FRC_Radio_Configuration_22_0_1.exe"
+$url = 'https://firstfrc.blob.core.windows.net/frc2022/Radio/FRC_Radio_Configuration_22_0_1.zip'
+$fileName = 'FRC_Radio_Configuration_22_0_1.exe'
 $zipChecksum = 'C49EA376122EA6CAA38264F333292D61057D89AE29DE15EA99937DF799ADB1E3'
 $exeChecksum = '12221ED6E633302D689A8FEAD6C3E07266B5AD3785820F9C2F536B50A2189B57'
 
