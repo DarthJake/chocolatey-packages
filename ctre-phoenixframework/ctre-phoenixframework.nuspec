@@ -5,7 +5,7 @@
     <id>ctre-phoenixframework</id>
     <title>CTRE Phoenix Framework</title>
     <version>5.21.2.1</version>
-    <packageSourceUrl>https://github.com/DarthJake/ctre-phoenixframework</packageSourceUrl>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/ctre-phoenixframework</packageSourceUrl>
     <authors>Cross The Road Electronics</authors>
     <owners>DarthJake</owners>
     <summary>CTRE Phoenix Framework</summary>

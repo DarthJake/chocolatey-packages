@@ -5,7 +5,7 @@
     <id>frc-radioconfigurationutility</id>
     <title>FRC Radio Configuration Utility</title>
     <version>22.0.1</version>
-    <packageSourceUrl>https://github.com/DarthJake/frc-radioconfigurationutility</packageSourceUrl>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/frc-radioconfigurationutility</packageSourceUrl>
     <authors>WPI</authors>
     <owners>DarthJake</owners>
     <summary>FRC Radio Configuration Utility</summary>

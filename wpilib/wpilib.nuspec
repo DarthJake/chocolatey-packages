@@ -5,7 +5,7 @@
     <id>wpilib</id>
     <title>WPILib</title>
     <version>2022.4.1</version>
-    <packageSourceUrl>https://github.com/DarthJake/wpilib</packageSourceUrl>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/wpilib</packageSourceUrl>
     <authors>WPI, PeterJohnson, Et Al.</authors>
     <owners>DarthJake</owners>
     <summary>WPILib</summary>
