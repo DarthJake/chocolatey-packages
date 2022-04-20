@@ -14,7 +14,7 @@
     <tags>frc radio configuration frc first robotics admin</tags>
     <copyright>© Copyright 2020, FIRST.</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/frc-radioconfigurationutility@master/logo.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/chocolatey-packages@master/_logos/frc-radioconfigurationutility.png</iconUrl>
     <dependencies>
       <dependency id="autohotkey.portable" />
       <dependency id="jre8" />
