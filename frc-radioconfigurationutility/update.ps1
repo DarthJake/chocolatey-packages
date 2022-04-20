@@ -28,9 +28,9 @@ function global:au_BeforeUpdate {
         $checksumType = 'sha256'
 
         # Get Zip Checksum
-        Write-Verbose "Downloading $url"
+        Write-Verbose "Downloading $Latest.url"
         $destZip = Join-Path $tempPath $Latest.ZipName
-        Invoke-WebRequest -Uri $url -OutFile $destZip
+        Invoke-WebRequest -Uri $Latest.url -OutFile $destZip
         $Latest.ZipChecksum = Get-FileHash -Path $destZip -Algorithm $checksumType | ForEach-Object { $_.Hash.ToLowerInvariant() }
 
         # Get Exe Checksum
