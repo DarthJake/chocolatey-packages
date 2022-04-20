@@ -14,7 +14,7 @@
     <tags>nisoftware frc ni national instruments first robotics admin</tags>
     <copyright>© 2022 NATIONAL INSTRUMENTS CORP. ALL RIGHTS RESERVED.</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/ni-frcgametools@master/logo_2020.jpg</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/chocolatey-packages@master/_logos/ni-frcgametools.jpg</iconUrl>
     <dependencies>
       <dependency id="chocolatey-isomount.extension" />
     </dependencies>
