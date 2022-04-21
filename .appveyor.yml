@@ -25,9 +25,9 @@ environment:
 
   # Mail credentials - for error notifications
   mail_user:
-    secure: UYEf8LHVR8oRv895EkvjEwkdTmU6ziZ6HMKnnSgEv28=
+    secure: cqrV2SA7PYXv9VPTGF8y+bwavAlYFMTeHVz9w6wzKa8=
   mail_pass:
-    secure: hwTsgKN8Q+BSl51ql+RE+Q==
+    secure: CqpyHOqSjNXHw4Ubv5sjeQ==
   mail_server: smtp.gmail.com
   mail_port: 587
   mail_enablessl: true
