@@ -9,6 +9,7 @@
     <authors>NI</authors>
     <owners>DarthJake</owners>
     <summary>National Instruments FRC Game Tools required for competition in the FIRST FRC Robotics competition.</summary>
+    <releaseNotes></releaseNotes>
     <description>The National Instruments FRC Game Tools is required for programming and controlling robots in the FIRST FRC Robotics competition.</description>
     <projectUrl>https://www.ni.com/en-us/support/downloads/drivers/download.frc-game-tools.html</projectUrl>
     <tags>nisoftware frc ni national instruments first robotics admin</tags>
