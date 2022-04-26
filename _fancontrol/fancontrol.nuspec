@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>fancontrol</id>
+    <title>Fan Control</title>
+    <version>0.0.110</version>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/tree/master/fancontrol</packageSourceUrl>
+    <authors>Rémi Mercier</authors>
+    <owners>DarthJake</owners>
+    <summary>Fan Control</summary>
+    <releaseNotes></releaseNotes>
+    <description>A focused and highly customizable fan controlling software for Windows. </description>
+    <projectUrl>https://github.com/Rem0o/FanControl.Releases/releases</projectUrl>
+    <tags>control cpu curves gpu temperature speed fan pwm fancontrol admin</tags>
+    <copyright>Copyright (c) 2022 Rémi Mercier.</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/chocolatey-packages@master/_logos/fancontrol.png</iconUrl>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
