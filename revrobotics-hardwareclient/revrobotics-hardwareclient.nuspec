@@ -4,12 +4,12 @@
   <metadata>
     <id>revrobotics-hardwareclient</id>
     <title>REV Hardware Client</title>
-    <version>1.4.2</version>
+    <version>1.4.3</version>
     <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/tree/master/revrobotics-hardwareclient</packageSourceUrl>
     <authors>REV Robotics</authors>
     <owners>DarthJake</owners>
     <summary>REV Hardware Client</summary>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>https://github.com/REVrobotics/REV-Software-Binaries/releases/tag/rhc-1.4.3</releaseNotes>
     <description>The REV Robotics Hardware Client software required to work with REV Robotics products in the FIRST FRC competition.</description>
     <projectUrl>https://github.com/REVrobotics/REV-Software-Binaries/releases</projectUrl>
     <tags>rev hardware client frc first robotics admin</tags>
