@@ -2,9 +2,9 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$url = 'https://github.com/REVrobotics/REV-Software-Binaries/releases/download/rhc-1.4.2/REV-Hardware-Client-Setup-1.4.2.exe'
-$fileName = 'REV-Hardware-Client-Setup-1.4.2.exe'
-$checksum = '3079682280D7735FE1399B970EE321E67FDA4087745D04DD55B4F3ABE70FC33C'
+$url = 'https://github.com/REVrobotics/REV-Software-Binaries/releases/download/rhc-1.4.3/REV-Hardware-Client-Setup-1.4.3.exe'
+$fileName = 'REV-Hardware-Client-Setup-1.4.3.exe'
+$checksum = 'a02918fa1da7e8c76431c8d7adb042b086c7456afad8dcf127c44cf7af91a2e6'
 
 $packageArgs = @{
   packageName    = $env:ChocolateyPackageName
