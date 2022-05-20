@@ -2,7 +2,7 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$url = 'https://github.com/REVrobotics/REV-Software-Binaries/releases/download/rhc-1.4.2/REV-Hardware-Client-Setup-1.4.2.exe'
+$url      = 'https://github.com/REVrobotics/REV-Software-Binaries/releases/download/rhc-1.4.2/REV-Hardware-Client-Setup-1.4.2.exe'
 $fileName = 'REV-Hardware-Client-Setup-1.4.2.exe'
 $checksum = '3079682280D7735FE1399B970EE321E67FDA4087745D04DD55B4F3ABE70FC33C'
 
@@ -15,7 +15,6 @@ $packageArgs = @{
   checksum       = $checksum
   checksumType   = 'sha256'
   silentArgs     = '/S'
-  # validExitCodes = @(0, 1223) # 1223 because there is a bug with the installer and /S right now
   validExitCodes = @(0)
 }
 
@@ -28,4 +27,4 @@ $ahkId = $ahkProc.Id
 Write-Debug "$ahkExe start time:`t$($ahkProc.StartTime.ToShortTimeString())"
 Write-Debug "Process ID:`t$ahkId"
 
-Install-ChocolateyPackage  @packageArgs #https://docs.chocolatey.org/en-us/guides/create/mount-an-iso-in-chocolatey-package
+Install-ChocolateyPackage  @packageArgs
