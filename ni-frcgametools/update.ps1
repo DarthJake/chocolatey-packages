@@ -1,5 +1,5 @@
-import-module au
-. $PSScriptRoot\..\_scripts\all.ps1
+Import-Module au
+Import-Module "$PSScriptRoot\..\_scripts\au_extensions.psm1"
 
 $releases = "https://www.ni.com/en-us/support/downloads/drivers/download.frc-game-tools.html"
 
