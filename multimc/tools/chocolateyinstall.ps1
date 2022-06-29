@@ -18,7 +18,7 @@ if (!$pp.NoStartMenu) {
   Install-ChocolateyShortcut -ShortcutFilePath $(Join-Path $startmenu "MultiMC.lnk") -TargetPath $(Join-Path $toolsDir "MultiMC\MultiMC.exe")
 }
 
-if ($pp.NoDesktopIcon) {
+if (!$pp.NoDesktopIcon) {
   Write-Host "Creating Desktop shortcut..."
   $desktop = [Environment]::GetFolderPath("Desktop")
   Install-ChocolateyShortcut -ShortcutFilePath $(Join-Path $desktop "MultiMC.lnk") -TargetPath $(Join-Path $toolsDir "MultiMC\MultiMC.exe")
