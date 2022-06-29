@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Package Information -->
+    <id>multimc</id>
+    <title>MultiMC</title>
+    <version>0.6.16</version>
+    <packageSourceUrl>https://github.com/DarthJake/chocolatey-packages/tree/master/multimc</packageSourceUrl>
+    <owners>Anthony Mastrean, Sorashi, DarthJake</owners>
+    <tags>multimc minecraft mc multi modpack mod pack forge fabric liteloader modrinth curseforge ftb technic atlauncher</tags>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/chocolatey-packages@master/_logos/multimc.png</iconUrl>
+    <summary>Manage Minecraft instances with ease.</summary>
+    <description>
+      MultiMC is a free, open-source launcher for Minecraft, managed by [@peterixxx](https://twitter.com/peterixxx).
+
+      It allows you to have multiple, separate instances of Minecraft (each with their own mods, texture packs, saves, etc) and helps you manage them and their associated options with a simple interface.
+
+      ## Package Parameters
+
+      - `/NoDesktopIcon` - Disallows the creation of a desktop icon.
+      - `/NoStartMenu` - Disallows the creation of a start menu link.
+
+      To pass parameters, use `--params "''"` (e.g. `choco install packageID [other options] --params="'/ITEM:value /ITEM2:value2 /FLAG_BOOLEAN'"`).
+      Another example: `choco install multimc --params="'/NoDesktopIcon /NoStartMenu'"`
+      To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
+    </description>
+    <!-- Software Information -->
+    <authors>Petr Mrázek, MultiMC Contributors</authors>
+    <projectUrl>https://github.com/MultiMC/Launcher</projectUrl>
+    <copyright>© 2013-2022 MultiMC Contributors</copyright>
+    <licenseUrl>https://github.com/MultiMC/Launcher#license</licenseUrl>
+    <releaseNotes>https://multimc.org/posts.html</releaseNotes>
+    <docsUrl>https://github.com/MultiMC/Launcher/wiki</docsUrl>
+    <bugTrackerUrl>https://github.com/MultiMC/Launcher/issues</bugTrackerUrl>
+    <!-- <dependencies>
+    </dependencies> -->
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="LICENSE" target="LICENSE" />
+  </files>
+</package>

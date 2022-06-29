@@ -27,9 +27,10 @@ function Export-HashtableToSerial() {
 
 function Import-HashtableFromSerial() {
   param(
-    [string]$serial
+    [String]$path
   )
 
-  [hashtable]$table = [System.Management.Automation.PSSerializer]::Deserialize($serial)
+  $file = Get-Content -Path (Resolve-Path $path)
+  [hashtable]$table = [System.Management.Automation.PSSerializer]::Deserialize($file)
   return $table
 }
