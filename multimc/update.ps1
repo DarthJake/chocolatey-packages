@@ -11,7 +11,11 @@ $versionRegex = '^.*"(\d+\.\d+\.\d+)-.*$'
 $infoFile = "$PSScriptRoot\info"
 
 function global:au_SearchReplace {
-    @{}
+    @{
+        ".\legal\VERIFICATION.txt" = @{
+            "(?i)(checksum:).*" = "`${1} $($Latest.Checksum32)"
+        }
+    }
 }
 
 # Not called if there is no update 
