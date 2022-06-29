@@ -6,7 +6,7 @@ $pp = Get-PackageParameters
 
 $unzipArgs = @{
   FileFullPath = Join-Path $toolsDir $fileName
-  Destination  = Join-Path $toolsDir
+  Destination  = $toolsDir
   PackageName  = $env:ChocolateyPackageName
 }
 
