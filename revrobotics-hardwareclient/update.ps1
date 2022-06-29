@@ -1,5 +1,5 @@
-import-module au
-. $PSScriptRoot\..\_scripts\all.ps1
+Import-Module au
+Import-Module "$PSScriptRoot\..\_scripts\au_extensions.psm1"
 
 $domain = 'https://github.com'
 $releases = "$domain/REVrobotics/REV-Software-Binaries/releases"

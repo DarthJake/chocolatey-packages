@@ -1,5 +1,5 @@
-import-module au
-. $PSScriptRoot\..\_scripts\all.ps1
+Import-Module au
+Import-Module "$PSScriptRoot\..\_scripts\au_extensions.psm1"
 
 # $domain = 'https://firstfrc.blob.core.windows.net'
 # $releases = "$domain/CrossTheRoadElec/Phoenix-Releases/releases"
