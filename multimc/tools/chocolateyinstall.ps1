@@ -12,6 +12,13 @@ $unzipArgs = @{
 
 Get-ChocolateyUnzip @unzipArgs
 
+# Set permissions so MultiMC can write its files
+$mmcPath = Join-Path $toolsDir 'MultiMC'
+$Acl = Get-Acl $mmcPath
+$Ar = New-Object System.Security.AccessControl.FileSystemAccessRule("BUILTIN\Users", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$Acl.SetAccessRule($Ar)
+Set-Acl $mmcPath $Acl
+
 if (!$pp.NoStartMenu) {
   Write-Host "Creating Start Menu shortcut..."
   $startmenu = Join-Path $env:programdata "Microsoft\Windows\Start Menu\Programs"
