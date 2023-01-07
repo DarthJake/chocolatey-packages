@@ -2,10 +2,10 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$url = 'https://firstfrc.blob.core.windows.net/frc2022/Radio/FRC_Radio_Configuration_22_0_1.zip'
-$fileName = 'FRC_Radio_Configuration_22_0_1.exe'
-$zipChecksum = 'C49EA376122EA6CAA38264F333292D61057D89AE29DE15EA99937DF799ADB1E3'
-$exeChecksum = '12221ED6E633302D689A8FEAD6C3E07266B5AD3785820F9C2F536B50A2189B57'
+$url = 'https://firstfrc.blob.core.windows.net/frc2023/Radio/FRC_Radio_Configuration_23_0_2.zip'
+$fileName = 'FRC_Radio_Configuration_23_0_2.exe'
+$zipChecksum = 'be0ae0ce0e60d9ef5467b0a2e91695cb2238713fea92f9fa4ee5c14cb8162365'
+$exeChecksum = 'e0727c8fc99175af128d0fc5f47db4e000acc17f74ad600635e15abf880c9a45'
 
 $unzipPackageArgs = @{
   packageName   = $env:ChocolateyPackageName
