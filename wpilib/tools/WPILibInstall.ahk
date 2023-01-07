@@ -62,7 +62,7 @@ Sleep, 1500
 if (VSCodeZipPath = "download") {
     ; Download
     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
-    FindAndClick(0, 0, Width/2, Height/2, BUTTON_COLOR)
+    FindAndClick(0, Height/2, Width/2, Height, BUTTON_COLOR)
 } else {
     ; Use Existing Zip
     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
