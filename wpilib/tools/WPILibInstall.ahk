@@ -3,8 +3,8 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-CoordMode, Mouse, Relative
-CoordMode, Pixel, Relative
+CoordMode, Mouse, Client
+CoordMode, Pixel, Client
 
 ;;;;; Options ;;;;;
 installScope := "allUsers" ; Default value for whether to install for "allUsers" or "currentUser"
@@ -37,19 +37,20 @@ if(A_Args[3] = "true") {
 ;;;;; Operations ;;;;;
 WinWait, %INSTALLER_TITLE%
 WinActivate, %INSTALLER_TITLE%
-WinSet, AlwaysOnTop , On, %INSTALLER_TITLE%
+WinSet, AlwaysOnTop , On, %INSTALLER_TITLE% ; Prevent Windows on top
+WinSet, Style, -0xc00000, %INSTALLER_TITLE% ; Prevent moving/resizing
 Sleep, 2000
 
 ; Find and click the start button on the right side of the screen
 WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
-FindAndClick(Width/2, Height/2, Width, Height, BUTTON_COLOR)
+FindAndClick(Width, Height, Width/2, Height/2, BUTTON_COLOR)
 Sleep, 1500
 
 ; Find and click install for all users or install for this user.
 if (installScope = "allUsers") {
     ; All Users
     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
-    FindAndClick(Width/2, Height/2, Width, Height*.75, BUTTON_COLOR)
+    FindAndClick(Width, Height*.75, Width/2, Height/2, BUTTON_COLOR)
 } else if (installScope = "currentUser") {
     ; Current User
     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
