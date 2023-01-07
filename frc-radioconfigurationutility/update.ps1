@@ -30,7 +30,7 @@ function global:au_BeforeUpdate {
         # Get Zip Checksum
         Write-Verbose "Downloading $Latest.url"
         $destZip = Join-Path $tempPath $Latest.ZipName
-        Invoke-WebRequest -Uri $Latest.url -OutFile $destZip
+        Invoke-WebRequest -Uri $Latest.url -OutFile $destZip -UseBasicParsing
         $Latest.ZipChecksum = Get-FileHash -Path $destZip -Algorithm $checksumType | ForEach-Object { $_.Hash.ToLowerInvariant() }
 
         # Get Exe Checksum
@@ -46,7 +46,7 @@ function global:au_BeforeUpdate {
 }
 
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $releases
+    $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
 
     # Determine URL, FileName, and Version
     $Matches = $null

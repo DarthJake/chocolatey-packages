@@ -23,7 +23,7 @@ function global:au_SearchReplace {
 function global:au_BeforeUpdate {}
 
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $releases
+    $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
 
     # Get URLs of latest installers
     $regex32 = "WPILib_Windows32-.*\.iso"

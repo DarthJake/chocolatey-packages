@@ -26,7 +26,7 @@ function global:au_BeforeUpdate {
 }
 
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $releases
+    $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
 
     # Get URLs of latest installers
     $regex = "REV-Hardware-Client-Setup-.*\.exe"
