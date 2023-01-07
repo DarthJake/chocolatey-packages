@@ -16,7 +16,7 @@ function global:au_SearchReplace {
 function global:au_BeforeUpdate {}
 
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $releases
+    $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
 
     # Determine URL, Version, and Checksum
     $regex = "`"includedversions-downloadpath`":`"(?<URL>https:\/\/download\.ni\.com\/support\/nipkg\/products\/ni-f\/ni-frc-\d{4}-game-tools\/[0-9.]*\/offline\/ni-frc-\d{4}-game-tools_(?<Version>\d+\.\d+\.\d+)_offline.iso).*?\(SHA256\)<\/b>\s*(?<Checksum>[0-9a-fA-F]{64})"
