@@ -2,8 +2,8 @@
 # Note: Install programming environments such as NI LabVIEW or Microsoft Visual Studio before installing this product.
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url = 'https://download.ni.com/support/nipkg/products/ni-f/ni-frc-2022-game-tools/22.0/offline/ni-frc-2022-game-tools_22.0.1_offline.iso'
-$checksum = '62401e5ff6ec71c4c3e70f2a239ae312b1b471ee6da6c1a715218b4522161812'
+$url = 'https://download.ni.com/support/nipkg/products/ni-f/ni-frc-2023-game-tools/23.0/offline/ni-frc-2023-game-tools_23.0.0_offline.iso'
+$checksum = 'b90526045b107eef5449b35037d5fb26e76e70802b29d90c902a25f2b055d449'
 
 $packageArgs = @{
   packageName    = $env:ChocolateyPackageName
