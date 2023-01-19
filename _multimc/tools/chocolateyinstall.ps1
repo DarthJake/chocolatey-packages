@@ -15,7 +15,8 @@ Get-ChocolateyUnzip @unzipArgs
 # Set permissions so MultiMC can write its files
 $mmcPath = Join-Path $toolsDir 'MultiMC'
 $Acl = Get-Acl $mmcPath
-$Ar = New-Object System.Security.AccessControl.FileSystemAccessRule("BUILTIN\Users", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$SID = New-Object System.Security.Principal.SecurityIdentifier('S-1-5-32-545')
+$Ar = New-Object System.Security.AccessControl.FileSystemAccessRule($SID, "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $Acl.SetAccessRule($Ar)
 Set-Acl $mmcPath $Acl
 
