@@ -2,9 +2,9 @@
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
-$url         = 'https://github.com/wpilibsuite/allwpilib/releases/download/v2023.1.1/WPILib_Windows-2023.1.1.iso'
-$fileName    = 'WPILibInstaller.exe'
-$isoChecksum = '5094459bbe2bbe91fa6e21b85d424435bf6ceacea24dae0b441fa4694f941015'
+$url           = 'https://github.com/wpilibsuite/allwpilib/releases/download/v2023.1.1/WPILib_Windows-2023.1.1.iso'
+$isoChecksum   = '5094459bbe2bbe91fa6e21b85d424435bf6ceacea24dae0b441fa4694f941015'
+$installerName = 'WPILibInstaller.exe'
 
 $pp = Get-PackageParameters
 $ahkParameters = ""
@@ -18,7 +18,7 @@ $packageArgs = @{
   fileType       = 'EXE'
   checksumType   = 'sha256'
   Url            = $url
-  file           = $fileName
+  file           = $installerName
   checksum       = $isoChecksum
   silentArgs     = '' #none
 }
