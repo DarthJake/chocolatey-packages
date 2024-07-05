@@ -1,4 +1,4 @@
-Import-Module au
+Import-Module Chocolatey-AU
 Import-Module "$PSScriptRoot\..\_scripts\au_extensions.psm1"
 
 $releases = "https://www.ni.com/en-us/support/downloads/drivers/download.frc-game-tools.html"

@@ -1,4 +1,4 @@
-Import-Module au
+Import-Module Chocolatey-AU
 Import-Module "$PSScriptRoot\..\_scripts\au_extensions.psm1"
 
 # $domain = 'https://firstfrc.blob.core.windows.net'
