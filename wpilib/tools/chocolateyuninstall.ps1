@@ -3,14 +3,17 @@ $ErrorActionPreference = 'Stop'; # stop on all errors
 Write-Host "Beginning uninstall process of WPILib..."
 
 # Variables that will need changed
-$year = '2023'
+$year = '2024'
 
-# Generated/Constant Variables
+# Generated Variables
 $systemDriveLetter = (Get-WmiObject Win32_OperatingSystem).getPropertyValue("SystemDrive")
 $publicUserHome = $systemDriveLetter + "\Users\Public"
 $wpiFolder = "$publicUserHome\wpilib"
-$userStartMenuFolder = "$HOME\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
-$systemStartMenuFolder = "$systemDriveLetter\ProgramData\Microsoft\Windows\Start Menu\Programs"
+$wpiFolderCurrentYear = "$wpiFolder\$year"
+$startMenuDirectories = @(
+  "$HOME\AppData\Roaming\Microsoft\Windows\Start Menu\Programs",
+  "$systemDriveLetter\ProgramData\Microsoft\Windows\Start Menu\Programs"
+)
 $startMenuLinks = @(
   "$year WPILib Tools",
   "$year WPILib Documentation.lnk",
@@ -24,33 +27,44 @@ $possibleLinkDirectories = @(
 $linkNames = @(
   "$year WPILib VS Code.lnk",
   "$year WPILib Documentation.lnk",
+  "AdvantageScope (WPILib) $year.lnk",
+  "Data Log Tool $year.lnk",
+  "Glass $year.lnk",
+  "OutlineViewer $year.lnk",
+  "PathWeaver $year.lnk",
+  "roboRIO Team Number Setter $year.lnk",
+  "RobotBuilder $year.lnk",
+  "Shuffleboard $year.lnk",
+  "SmartDashboard $year.lnk",
+  "SysId $year.lnk",
   "$year WPILib Tools"
 )
 
 ##### Delete WPILib folder #####
 # Check if the inside wpilib folder exists, attempt to delete it, check if was successful
-Write-Host "`nRemoving the WPILib folder..."
-if (Test-Path -Path "$wpiFolder\$year") {
-  Remove-Item "$wpiFolder\$year" -ErrorAction SilentlyContinue -Force -Recurse
+Write-Host "`nRemoving the WPILib $year folder..."
+if (Test-Path -Path $wpiFolderCurrentYear) {
+  Remove-Item $wpiFolderCurrentYear -ErrorAction SilentlyContinue -Force -Recurse
   
-  if (!(Test-Path -Path "$wpiFolder\$year")) {
-    Write-Host "`tRemoved wpilib folder at `"$wpiFolder\$year`"" -ForegroundColor Green
+  if (!(Test-Path -Path $wpiFolderCurrentYear)) {
+    Write-Host "`tRemoved wpilib folder at `"$wpiFolderCurrentYear`"" -ForegroundColor Green
   } else {
-    Write-Host "`tAn error occured while trying to delete the wpilib folder at `"$wpiFolder\$year`"" -ForegroundColor Red
+    Write-Host "`tAn error occured while trying to delete the wpilib folder at `"$wpiFolderCurrentYear`"" -ForegroundColor Red
   }
 } else {
-  Write-Host "`tIt appears that the wpilib folder expected at `"$wpiFolder\$year`" does not exists. This could be a good indicator that wpilib (for this year) is not/no longer installed, however the uninstall process will continue to ensure that all elements of wpilib are gone`n" -ForegroundColor Yellow
+  Write-Host "`tIt appears that the wpilib folder expected at `"$wpiFolderCurrentYear`" does not exists. This could be a good indicator that wpilib (for this year) is not/no longer installed, however the uninstall process will continue to ensure that all elements of wpilib are gone`n" -ForegroundColor Yellow
 }
 
 # Delete the outside wpilib folder if it exists and is now empty
 if(Test-Path $wpiFolder){
   if ((Get-ChildItem $wpiFolder -force | Select-Object -First 1 | Measure-Object).Count -eq 0) {
+    Write-Host "`nRemoving the WPILib parent folder as it is empty..."
     Remove-Item $wpiFolder -ErrorAction SilentlyContinue -Force -Recurse
 
     if (!(Test-Path -Path $wpiFolder)) {
       Write-Host "`tRemoved the main wpilib folder at `"$wpiFolder`" because it was empty" -ForegroundColor Green
     } else {
-      Write-Host "`tAn error occured while trying to delete the main wpilib folder at `"$wpiFolder`"" -ForegroundColor Red
+      Write-Host "`tAn error occured while trying to delete the wpilib parent folder at `"$wpiFolder`"" -ForegroundColor Red
     }
   }
 } else {
@@ -65,18 +79,19 @@ $LinksFound = ""
 foreach ($directory in $possibleLinkDirectories) {
   Write-Host "`tSearching `"$directory`" for links to delete:"
   foreach ($link in $linkNames) {
+    $linkPath = Join-Path -Path $directory -ChildPath $link
     # Check for link file, if its there attempt to delete it, recheck if its there.
-    if (Test-Path ("{0}\{1}" -f $directory, $link)) {
+    if (Test-Path -Path $linkPath) {
       $LinksFound = $TRUE
-      Remove-Item ("{0}\{1}" -f $directory, $link) -ErrorAction SilentlyContinue -Force -Recurse
+      Remove-Item $linkPath -ErrorAction SilentlyContinue -Force -Recurse
 
-      if (!(Test-Path ("{0}\{1}" -f $directory, $link))) {
-        Write-Host "`t`tFound and deleted `"$link`" in `"$directory`"" -ForegroundColor Green
+      if (!(Test-Path -Path $linkPath)) {
+        Write-Host "`t`tFound and deleted `"$linkPath`"" -ForegroundColor Green
       } else {
-        Write-Host "`t`tAttempted Deleting `"$link`" in `"$directory`" but could not delete" -ForegroundColor Red
+        Write-Host "`t`tAttempted deleting `"$linkPath`" but could not delete" -ForegroundColor Red
       }
     } else {
-      Write-Host "`t`tLooked for `"$link`" in `"$directory`" but found nothing" -ForegroundColor Yellow
+      Write-Host "`t`tLooked for `"$linkPath`" but found nothing" -ForegroundColor Yellow
     }
   }
 }
@@ -87,40 +102,28 @@ if (!$LinksFound) {
 ##### Remove Start Menu Shortcuts #####
 Write-Host "`nRemoving Start Menu Shortcuts..."
 $foundStartMenu = ""
-# Check for and delete start menu shortcuts in the user's start menu folder
-Write-Host "`tSearching `"$userStartMenuFolder`" for links to delete:"
-foreach ($item in $startMenuLinks) {
-  if (Test-Path -Path "$userStartMenuFolder\$item") {
-    Remove-Item "$userStartMenuFolder\$item" -ErrorAction SilentlyContinue -Force -Recurse
-    $foundStartMenu = $TRUE
-    
-    if (!(Test-Path -Path "$userStartMenuFolder\$item")) {
-      Write-Host "`t`tRemoved start menu item at `"$userStartMenuFolder\$item`"" -ForegroundColor Green
+# Check for and delete start menu shortcuts in each start menu folder
+foreach($directory in $startMenuDirectories) {
+  Write-Host "`tSearching `"$directory`" for links to delete:"
+  foreach ($item in $startMenuLinks) {
+    $itemPath = Join-Path -Path $directory -ChildPath $item
+    if (Test-Path -Path $itemPath) {
+      Remove-Item $itemPath -ErrorAction SilentlyContinue -Force -Recurse
+      $foundStartMenu = $TRUE
+      
+      if (!(Test-Path -Path $itemPath)) {
+        Write-Host "`t`tRemoved start menu item at `"$itemPath`"" -ForegroundColor Green
+      } else {
+        Write-Host "`t`tAn error occured while trying to delete the start menu item at `"$itemPath`"" -ForegroundColor Red
+      }
     } else {
-      Write-Host "`t`tAn error occured while trying to delete the start menu item at `"$userStartMenuFolder\$item`"" -ForegroundColor Red
+      Write-Host "`t`tLooked for `"$itemPath`" but found nothing" -ForegroundColor Yellow
     }
-  } else {
-    Write-Host "`t`tLooked for `"$item`" in `"$userStartMenuFolder`" but found nothing" -ForegroundColor Yellow
   }
 }
-# Check for and delete start menu shortcuts in the system's start menu folder
-Write-Host "`tSearching `"$systemStartMenuFolder`" for links to delete:"
-foreach ($item in $startMenuLinks) {
-  if (Test-Path -Path "$systemStartMenuFolder\$item") {
-    Remove-Item "$systemStartMenuFolder\$item" -ErrorAction SilentlyContinue -Force -Recurse
-    $foundStartMenu = $TRUE
-    
-    if (!(Test-Path -Path "$systemStartMenuFolder\$item")) {
-      Write-Host "`t`tRemoved start menu item at `"$systemStartMenuFolder\$item`"" -ForegroundColor Green
-    } else {
-      Write-Host "`t`tAn error occured while trying to delete the start menu item at `"$systemStartMenuFolder\$item`"" -ForegroundColor Red
-    } 
-  } else {
-    Write-Host "`t`tLooked for `"$item`" in `"$userStartMenuFolder`" but found nothing" -ForegroundColor Yellow
-  }
-}
+
 if (!$foundStartMenu) {
-  Write-Host "`tThere is no Start Menu folder to delete. It was either already removed or the wpilib installer was run without admin privlages" -ForegroundColor Yellow
+  Write-Host "`tThere is no Start Menu folder to delete. It was either already removed or the wpilib uninstaller was run without admin privlages" -ForegroundColor Yellow
 }
 
 Write-Host "`nFinished uninstalling WPILib!" -ForegroundColor Green
