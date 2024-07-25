@@ -25,7 +25,7 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 </description>
     <projectUrl>https://github.com/wpilibsuite/allwpilib/releases</projectUrl>
     <tags>wpilib frc first robotics admin</tags>
-    <copyright>Copyright (c) 2009-2023 FIRST.</copyright>
+    <copyright>Copyright (c) 2009-2024 FIRST.</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://cdn.jsdelivr.net/gh/DarthJake/chocolatey-packages@master/_logos/wpilib.png</iconUrl>
     <dependencies>

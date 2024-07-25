@@ -1,0 +1,143 @@
+﻿#Requires AutoHotkey v2.0
+#SingleInstance Force
+#Warn  ; Enable warnings to assist with detecting common errors.
+SetWorkingDir(A_ScriptDir)	; Ensures a consistent starting directory.
+SetTitleMatchMode("RegEx")
+
+
+;;;;; Options (And their valid states) ;;;;;
+; The first value is the default value that will be set if the input is invalid
+installScope := ["allUsers", "currentUser"] ; Whether to install for "allUsers" or "currentUser"
+VSCodeZipPath := ["download", "iA).*\.zip$"] ; "download" will cause a download instead of using a cached zip
+allowUserInteraction := ["false", "true"] ; Used mainly for debugging or if you really want to hit some buttons yourself
+
+;MsgBox RegExMatch(test, VSCodeZipPath[2])
+; MsgBox ValidateArgument(test, VSCodeZipPath)
+
+;;;;; Contstants ;;;;;
+INSTALLER_TITLE := "WPILib Installer"
+ZIP_SELECTOR_TITLE := "Select VS Code Installer ZIP"
+; BUTTON_COLOR := "0xF5F5F5"
+
+;;;;; Parameters ;;;;;
+; Parameter order will always be the same due to how they are passed in chocolateyinstall.ps1
+; MsgBox % "Starting with " . A_Args[0] . " parameters: " . A_Args[1] . " " A_Args[2] . " " A_Args[3] . "."
+; Parameter for Install Scope
+; ListVars
+; Pause
+installScope := ValidateArgument(A_Args[1], installScope)
+VSCodeZipPath := ValidateArgument(A_Args[2], VSCodeZipPath)
+allowUserInteraction := ValidateArgument(A_Args[3], allowUserInteraction)
+; ListVars
+; Pause
+
+;;;;; Operations ;;;;;
+WinWait INSTALLER_TITLE
+WinActivate
+WinSetAlwaysOnTop 1 ; Prevent windows on top
+WinMove 0, 0, 380, 230 ; Make window small [TODO: Maybe move off screen]
+WinSetStyle -0xC00000 | 0x40000 ; Prevent moving and resizing
+Sleep 2000
+
+; WinWait, %INSTALLER_TITLE%
+; WinActivate, %INSTALLER_TITLE%
+; WinSet, AlwaysOnTop , On, %INSTALLER_TITLE% ; Prevent Windows on top
+; WinSet, Style, -0xc00000, %INSTALLER_TITLE% ; Prevent moving/resizing
+; Sleep, 2000
+
+; ; Find and click the start button on the right side of the screen
+; WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+; FindAndClick(Width, Height, Width/2, Height/2, BUTTON_COLOR)
+; Sleep, 1500
+
+; ; Find and click install for all users or install for this user.
+; if (installScope = "allUsers") {
+;     ; All Users
+;     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;     FindAndClick(Width, Height*.75, Width/2, Height/2, BUTTON_COLOR)
+; } else if (installScope = "currentUser") {
+;     ; Current User
+;     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;     FindAndClick(0, Height/2, Width/2, Height*.75, BUTTON_COLOR)
+; }
+; Sleep, 1500
+
+; ; Selecting the options to either download or choose existing
+; if (VSCodeZipPath = "download") {
+;     ; Download
+;     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;     FindAndClick(0, Height/2, Width/2, Height, BUTTON_COLOR)
+; } else {
+;     ; Use Existing Zip
+;     WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;     FindAndClick(Width/2, Height*.7, Width, Height/2, BUTTON_COLOR)
+;     Sleep, 300
+;     WinWait, %ZIP_SELECTOR_TITLE%
+;     Sleep, 300
+;     SendInput {Raw}%VSCodeZipPath%
+;     Send {Enter}
+; }
+; Sleep, 1500
+
+; if !(ErrorLevel) {
+;     ; MsgBox % "No AHK errors! - GO!"
+;     if (allowUserInteraction == "false") {
+;         ; Click next which will start instalation
+;         WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;         FindAndClick(Width, Height, Width/2, Height*0.9, BUTTON_COLOR)
+;         Sleep, 5000
+
+;         ; Click Finish
+;         WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;         FindAndClick(Width, Height, Width/2, Height*0.9, BUTTON_COLOR)
+;     } else {
+;         MsgBox % "Ending to allow user interaction."
+;     }
+; } else {
+;     MsgBox % "AHK ERROR!!" 
+; }
+
+; ; Finds the specified color in the bounding box created by (X1, Y1), (X2, Y2).
+; ; It will search in the direction of X1->X2 and Y1->Y2 (from the first point, to the second)
+; ; It will continute to search until it finds it.
+; FindAndClick(X1, Y1, X2, Y2, color) {
+;     WinActivate, %INSTALLER_TITLE%
+;     PixelSearch, Xout, Yout, X1, Y1, X2, Y2, color, 0, Fast
+;     While(ErrorLevel = 1) { ; Wait till its found
+;         ; WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;         WinActivate, %INSTALLER_TITLE%
+;         PixelSearch, Xout, Yout, X1, Y1, X2, Y2, color, 0, Fast
+;         Sleep, 1000
+;     }
+;     MouseClick, Left, Xout, Yout, 1, 0
+;     ; MouseMove, Xout, Yout ; For testing
+; }
+
+; ; Function for debugging PixelSearch parameters
+; TestPixelSearch(){
+;     Loop {
+;         Sleep, 500
+;         WinGetPos, X, Y, Width, Height, %INSTALLER_TITLE%
+;         PixelSearch, X, Y, Width, Height, Width/2, Height/2, %BUTTON_COLOR%, 0, Fast
+;         ToolTip, The color is at %X%`,%Y%, X, Y
+;     }
+; }
+
+; Checks if a value (needle) matches any regex in an array and returns its index. 
+HasValByRegex(haystackOfRegEx, needle) {
+    if !(IsObject(haystackOfRegEx))
+        Throw ValueError("Bad haystack!", -1, haystackOfRegEx)
+    for index, regex in haystackOfRegEx
+        if (RegExMatch(needle, regex))
+            return index
+    return 0
+}
+
+ValidateArgument(argument, validArgumentsRegex) {
+    if argument = ''
+        return validArgumentsRegex[1]
+    if HasValByRegex(validArgumentsRegex, argument)
+        return argument
+    else
+        return validArgumentsRegex[1]
+}
